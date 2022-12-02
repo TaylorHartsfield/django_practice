@@ -1,0 +1,24 @@
+{%extends 'main/base.html'%}
+
+{%block title%}All Lists{%endblock%}
+
+{% block content %} 
+
+{%for list in todolists%}
+<h1>{{list.name}}</h1>
+    {%for item in list.item_set.all%}
+            <ul>
+                <li>
+                    <p>{{item.text}}
+                    {%if not item.complete%}
+                    <button type="checkbox">Complete?</button>
+                    {%else%}
+                   - COMPLETE
+                    {%endif%}
+                </p>
+                </li>
+            </ul>
+    {%endfor%}
+{%endfor%}
+
+{%endblock%}
